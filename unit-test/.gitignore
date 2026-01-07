@@ -1,0 +1,19 @@
+# Java build artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Build directories
+bin/
+build/
+out/
+target/
+
+# IDE metadata
+.classpath
+.project
+.settings/
+.idea/
+.vscode/
