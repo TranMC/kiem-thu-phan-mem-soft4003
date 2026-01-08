@@ -1,4 +1,7 @@
-package java;
+package com.example;
+
+import java.util.List;
+
 public class StudentAnalyzer {
 
     public int countExcellentStudents(List<Double> scores) {
