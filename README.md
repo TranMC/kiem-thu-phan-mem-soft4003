@@ -37,24 +37,24 @@ mvn clean compile
 
 ###  Cách chạy test
 
-#### Chạy tất cả test cases
+#### Chạy tất cả ca kiểm thử
 ```bash
 cd unit-test
 mvn test
 ```
 
-#### Chạy một test cụ thể
+#### Chạy một kiểm thử cụ thể
 ```bash
 mvn test -Dtest=StudentAnalyzerTest#testCountExcellentStudents_normalCase
 ```
 
 #### Test cases bao gồm:
-- **testCountExcellentStudents_normalCase**: Test đếm sinh viên xuất sắc với dữ liệu hỗn hợp
-- **testCountExcellentStudents_allValid**: Test với tất cả điểm đều hợp lệ
-- **testCountExcellentStudents_emptyList**: Test với danh sách rỗng
-- **testCalculateValidAverage_mixedValues**: Test tính trung bình với giá trị hỗn hợp
-- **testCalculateValidAverage_boundaryValues**: Test với giá trị biên
-- **testCalculateValidAverage_emptyList**: Test tính trung bình với danh sách rỗng
+- **testCountExcellentStudents_normalCase**: Kiểm thử đếm sinh viên xuất sắc với dữ liệu hỗn hợp
+- **testCountExcellentStudents_allValid**: Kiểm thử với tất cả điểm đều hợp lệ
+- **testCountExcellentStudents_emptyList**: Kiểm thử với danh sách rỗng
+- **testCalculateValidAverage_mixedValues**: Kiểm thử tính trung bình với giá trị hỗn hợp
+- **testCalculateValidAverage_boundaryValues**: Kiểm thử với giá trị biên
+- **testCalculateValidAverage_emptyList**: Kiểm thử tính trung bình với danh sách rỗng
 
 ---
 <p align="center"> © 2026 TranMC</p>
