@@ -5,6 +5,11 @@ Dự án này chứa các tài liệu và mã nguồn, bài tập liên quan đ�
 
 
 ## Bài 1: Nguyên lí của kiểm thử
+- Đường dẫn tới trang bài tập: [Can't Unsee](https://cantunsee.space/)
+- Số lần làm: 03
+- Ngày thực hiện: 5/1/2026
+
+
 ![https://cantunsee.space/](kiemthu01.png)
 
 ## Bài 2: Quy trình kiểm thử
