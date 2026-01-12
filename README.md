@@ -1,6 +1,6 @@
 # Kiểm Thử Phần Mềm - SOFT4003
 
-## 📖 Giới thiệu
+##  Giới thiệu
 Dự án này chứa các tài liệu và mã nguồn, bài tập liên quan đến môn học **Kiểm thử phần mềm (SOFT4003)**.
 
 
@@ -8,7 +8,7 @@ Dự án này chứa các tài liệu và mã nguồn, bài tập liên quan đ�
 ![https://cantunsee.space/](kiemthu01.png)
 
 ## Bài 2: Quy trình kiểm thử
-### 📚 Mô tả bài toán
+###  Mô tả bài toán
 
 #### StudentAnalyzer
 Chương trình phân tích điểm số của sinh viên với các chức năng:
@@ -22,7 +22,7 @@ Chương trình phân tích điểm số của sinh viên với các chức năn
    - Bỏ qua các giá trị null hoặc ngoài phạm vi
    - Trả về 0 nếu không có điểm hợp lệ
 
-### 🚀 Cách chạy chương trình
+###  Cách chạy chương trình
 
 #### Yêu cầu
 - Java JDK 8 trở lên
@@ -34,12 +34,8 @@ cd unit-test
 mvn clean compile
 ```
 
-#### Chạy chương trình
-```bash
-mvn exec:java -Dexec.mainClass="java.StudentAnalyzer"
-```
 
-### 🧪 Cách chạy test
+###  Cách chạy test
 
 #### Chạy tất cả test cases
 ```bash
