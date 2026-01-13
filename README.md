@@ -110,5 +110,115 @@ Kết quả chi tiết được lưu trong thư mục: `unit-test/target/surefir
 | testCalculateValidAverage_emptyList | Tính trung bình với danh sách rỗng |
 
 ---
+## Bài 3: Kiểm thử tĩnh
+
+### Yêu cầu đề bài: Kiểm thử tự động End-to-End với Cypress
+
+#### Cài đặt Cypress
+
+**Yêu cầu:**
+- [Node.js](https://nodejs.org/en/download) phiên bản 14 trở lên
+- Sử dụng một trình soạn thảo được hỗ trợ
+
+**Các bước cài đặt:**
+
+1. Tạo thư mục dự án:
+```bash
+mkdir cypress-exercise
+cd cypress-exercise
+npm init -y
+```
+
+2. Cài đặt Cypress:
+```bash
+npm install cypress --save-dev
+```
+
+#### Kịch bản kiểm thử
+
+**1. Đăng nhập thành công**
+
+*Mục tiêu:* Xác minh đăng nhập với thông tin hợp lệ
+
+*Các bước:*
+- Truy cập https://www.saucedemo.com
+- Nhập username: `standard_user`, password: `secret_sauce`
+- Click nút "Login"
+- Xác minh URL chứa `/inventory.html`
+
+![Kịch bản 1](cypress-exercise/cypress/screenshots/login_spec.cy.js/login-success.png)
+
+---
+
+**2. Đăng nhập thất bại**
+
+*Mục tiêu:* Kiểm tra thông báo lỗi khi đăng nhập sai
+
+*Các bước:*
+- Truy cập https://www.saucedemo.com
+- Nhập username: `invalid_user`, password: `wrong_password`
+- Click nút "Login"
+- Xác minh hiển thị lỗi: "Username and password do not match"
+
+![Kịch bản 2](cypress-exercise/cypress/screenshots/login_spec.cy.js/login-failed.png)
+
+---
+
+**3. Thêm sản phẩm vào giỏ hàng**
+
+*Mục tiêu:* Kiểm tra thêm sản phẩm vào giỏ
+
+*Các bước:*
+- Đăng nhập (`standard_user/secret_sauce`)
+- Click "Add to cart" cho sản phẩm đầu tiên
+- Xác minh badge giỏ hàng hiển thị: 1
+
+![Kịch bản 3](cypress-exercise/cypress/screenshots/cart_spec.cy.js/cart-add-product.png)
+
+---
+
+**4. Lọc sản phẩm theo giá**
+
+*Mục tiêu:* Kiểm tra bộ lọc sắp xếp sản phẩm
+
+*Các bước:*
+- Đăng nhập với thông tin hợp lệ
+- Chọn bộ lọc "Price (low to high)"
+- Xác minh sản phẩm đầu tiên có giá thấp nhất
+
+![Kịch bản 4](cypress-exercise/cypress/screenshots/cart_spec.cy.js/cart-sort-price-low-to-high.png)
+
+---
+
+**5. Xóa sản phẩm khỏi giỏ hàng**
+
+*Mục tiêu:* Kiểm tra xóa sản phẩm trong giỏ
+
+*Các bước:*
+- Đăng nhập (`standard_user/secret_sauce`)
+- Click "Add to cart" cho sản phẩm đầu tiên
+- Xác minh badge giỏ hàng: 1
+- Click "Remove"
+- Xác minh badge giỏ hàng biến mất
+
+<video src="cypress-exercise/cypress/videos/cart_spec.cy.js.mp4" controls width="100%"></video>
+
+---
+
+**6. Quy trình thanh toán hoàn chỉnh**
+
+*Mục tiêu:* Kiểm thử luồng thanh toán từ đầu đến cuối
+
+*Các bước:*
+- Đăng nhập (`standard_user/secret_sauce`)
+- Thêm sản phẩm đầu tiên vào giỏ
+- Click vào icon giỏ hàng, sau đó "Checkout"
+- Điền thông tin: First Name: `John`, Last Name: `Doe`, Zip: `12345`
+- Click "Continue"
+- Xác minh URL chứa `/checkout-step-two.html`
+
+<video src="cypress-exercise/cypress/videos/checkout_spec.cy.js.mp4" controls width="100%"></video>
+
+---
 <p align="center"> © 2026 TranMC</p>
 
