@@ -201,7 +201,7 @@ npm install cypress --save-dev
 - Click "Remove"
 - Xác minh badge giỏ hàng biến mất
 
-<video src="cypress-exercise/cypress/videos/cart_spec.cy.js.mp4" controls width="100%"></video>
+![Demo xóa sản phẩm](cypress-exercise/cypress/videos/cart_spec.cy.js.gif)
 
 ---
 
@@ -217,7 +217,7 @@ npm install cypress --save-dev
 - Click "Continue"
 - Xác minh URL chứa `/checkout-step-two.html`
 
-<video src="cypress-exercise/cypress/videos/checkout_spec.cy.js.mp4" controls width="100%"></video>
+![Demo xóa sản phẩm](cypress-exercise/cypress/videos/checkout_spec.cy.js.gif)
 
 ---
 <p align="center"> © 2026 TranMC</p>
