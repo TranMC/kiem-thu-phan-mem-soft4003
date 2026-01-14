@@ -1,7 +1,9 @@
 # Kiểm Thử Phần Mềm - SOFT4003
 > [!NOTE]
 > **Sinh viên thực hiện:** Trần Việt Anh 
-> **MSSV:** BCS230111 Ư
+>
+> **MSSV:** BCS230111 
+>
 > **Lớp:** 23CS-GM
 
 Dự án tập trung vào các bài tập và ứng dụng thực tế về kiểm thử phần mềm, bao gồm kiểm thử đơn vị, kiểm thử tĩnh, và kiểm thử tự động End-to-End.
