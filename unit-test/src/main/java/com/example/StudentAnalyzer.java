@@ -11,7 +11,9 @@ public class StudentAnalyzer {
 
         int count = 0;
         for (Double score : scores) {
-            if (score >= 0 && score <= 10 && score >= 8.0) {
+            if (score == null) continue;
+
+            if (score >= 8.0 && score <= 10.0) {
                 count++;
             }
         }
@@ -27,7 +29,9 @@ public class StudentAnalyzer {
         int count = 0;
 
         for (Double score : scores) {
-            if (score >= 0 && score <= 10) {
+            if (score == null) continue;
+
+            if (score >= 0.0 && score <= 10.0) {
                 sum += score;
                 count++;
             }
