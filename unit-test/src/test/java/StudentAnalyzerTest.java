@@ -100,4 +100,45 @@ public class StudentAnalyzerTest {
         assertEquals(0, analyzer.calculateValidAverage(null), 0.001);
     }
 
+    //Kiểm thử kỹ thuật biên JUnit
+    @Test
+    public void testCountExcellentStudents_scoreJustAboveMax() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(10.0001, 10.01); 
+        assertEquals(0, analyzer.countExcellentStudents(scores), "10.0001 should not be excellent");
+    }
+
+    @Test
+    public void testCountExcellentStudents_listWithNullElements() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(8.5, null, 9.0);
+        assertEquals(2, analyzer.countExcellentStudents(scores), "Should ignore null values and count valid ones");
+    }
+    @Test
+    public void testCalculateValidAverage_boundaryEpsilon() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(-0.01, 0.0, 10.0, 10.01);
+        assertEquals(5.0, analyzer.calculateValidAverage(scores), 0.001, "Should exclude -0.01 and 10.01");
+    }
+
+    @Test
+    public void testCalculateValidAverage_listWithNullElements() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(10.0, null, 5.0); 
+        assertEquals(7.5, analyzer.calculateValidAverage(scores), 0.001);
+    }
+    @Test
+    public void testCountExcellentStudents_containsNullElements() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(9.0, null, 6.5); 
+        assertEquals(1, analyzer.countExcellentStudents(scores));
+    }
+
+    @Test
+    public void testCalculateValidAverage_containsNullElements() {
+        StudentAnalyzer analyzer = new StudentAnalyzer();
+        List<Double> scores = Arrays.asList(8.0, null, 10.0);
+        assertEquals(9.0, analyzer.calculateValidAverage(scores), 0.001);
+    }
+
 }

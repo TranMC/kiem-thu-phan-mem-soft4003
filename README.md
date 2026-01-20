@@ -259,6 +259,84 @@ npx cypress open
 ![Demo quy trình thanh toán](cypress-exercise/cypress/videos/checkout_spec.cy.js.gif)
 
 ---
+## Báo cáo kiểm thử hiệu năng với Apache JMeter
+
+### 1. Mục tiêu
+- Làm quen với công cụ Apache JMeter
+- Thực hiện kiểm thử hiệu năng website
+- Phân tích các chỉ số hiệu năng cơ bản
+
+### 2. Đối tượng được kiểm thử
+- Đường dẫn: https://vnexpress.net/
+- Loại đối tượng: Website cung cấp thông tin
+
+### 3. Môi trường kiểm thử
+- Công cụ: Apache JMeter 5.x
+- Hệ điều hành: Windows
+- Kết nối mạng: Internet cá nhân
+
+### 4. Các kịch bản kiểm thử
+
+#### 4.1 Thread Group 1 – Kịch bản cơ bản
+- Số lượng người dùng: 10
+- Số vòng lặp: 5
+- Hành vi: Gửi HTTP GET đến trang chủ
+
+**Kết quả (từ summary.csv):**
+- Trung bình: 44 ms (tối thiểu 16, tối đa 96)
+- Tỷ lệ lỗi: 0.00%
+- Thông lượng: 10.56 yêu cầu/giây (req/s)
+- Băng thông (BW): Nhận 3097.87 KB/s, Gửi 1.14 KB/s
+
+---
+
+#### 4.2 Thread Group 2 – Kịch bản tải nặng
+- Số lượng người dùng: 50
+- Ramp-up Period: 30 giây
+- Hành vi: Truy cập trang chủ và một trang con
+
+**Kết quả (tổng hợp từ summary.csv cho "HTTP Request Empty 2" + "HTTP Request Da Bong"):**
+- Trung bình: ~3770 ms (tối thiểu 22, tối đa 13277)
+- Tỷ lệ lỗi: ~56.10%
+- Thông lượng: ~3.57 yêu cầu/giây (req/s)
+- Băng thông (BW): Nhận ~642.52 KB/s, Gửi ~0.33 KB/s
+
+---
+
+#### 4.3 Thread Group 3 – Kịch bản tùy chỉnh
+- Số lượng người dùng: 20
+- Thời gian chạy: 60 giây
+- Hành vi: Truy cập 2 trang con khác nhau
+
+**Kết quả (tổng hợp từ summary.csv cho "HTTP Request Zalo" + "HTTP Request Anti Scam"):**
+- Trung bình: ~95 ms (tối thiểu 1, tối đa 13864)
+- Tỷ lệ lỗi: ~86.40%
+- Thông lượng: ~156.41 yêu cầu/giây (req/s)
+- Băng thông (BW): Nhận ~5435.21 KB/s, Gửi ~25.49 KB/s
+
+### 5. Kết quả tổng hợp và nhận xét
+![Kết quả kiểm thử hiệu năng](jmeter/results/Summary.png)
+
+#### Bảng tổng hợp (Summary Report)
+
+| Nhãn                   | Số mẫu   | TB (ms)  | Tối thiểu | Tối đa   | Độ lệch chuẩn | Tỷ lệ lỗi | Thông lượng (yêu cầu/giây) |
+| ---------------------- | -------- | -------- | --------- | -------- | -------------- | --------- | --------------------------- |
+| HTTP Request Empty     | 50       | 44       | 16    | 96        | 19.19       | 0%         | 10.56                |
+| HTTP Request Empty 2   | 32       | 4819     | 52    | 13277     | 4496.35     | 71.88%     | 1.71                 |
+| HTTP Request Zalo      | 1467     | 152      | 2     | 13855     | 1339.26     | 86.30%     | 78.53                |
+| HTTP Request Da Bong   | 9        | 34       | 22    | 62        | 10.80       | 0%         | 1.86                 |
+| HTTP Request Anti Scam | 1450     | 38       | 1     | 13864     | 629.76      | 86.48%     | 77.88                |
+| **TỔNG**               | **3008** | **144**  | **1** | **13864** | **1232.57** | **84.54%** | **160.97**           |
+
+- Tổng hợp kết quả từ [summary.csv](jmeter/results/summary.csv): Trung bình 144 ms; Tỷ lệ lỗi 84.54%; Thông lượng 160.97 yêu cầu/giây (req/s).
+- TG1 (cơ bản): ổn định, không lỗi; phản hồi thấp (44 ms), thông lượng 10.56 req/s.
+- TG2 (tải nặng): phản hồi ~3.77 s, lỗi cao (~56%), thông lượng thấp (~3.57 req/s) → cần rà soát cấu hình/kịch bản.
+- TG3 (tùy chỉnh): thông lượng rất cao (~156 req/s) nhưng lỗi rất lớn (~86%) → khả năng endpoint chặn/truy cập chưa hợp lệ.
+
+### 6. Kết luận
+Apache JMeter là công cụ hiệu quả để kiểm thử hiệu năng website. Qua bài thực hành này, sinh viên đã hiểu cách thiết kế kịch bản kiểm thử và phân tích kết quả kiểm thử hiệu năng.
+
+---
 
 <p align="center">© 2026 TranMC</p>
 
